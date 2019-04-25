@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
-from flask_app import app
+from script import app
 from forms import UploadForm
 from werkzeug.utils import secure_filename
 

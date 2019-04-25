@@ -3,7 +3,7 @@ from apyori import apriori
 import time
 from datetime import datetime
 
-from flask_app import app
+from script import app
 
 
 def save_results(results, filename):
