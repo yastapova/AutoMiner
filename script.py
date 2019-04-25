@@ -9,7 +9,8 @@ DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'form-secret-key'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024  # limit upload size upto 8mb
+# app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024  # limit upload size upto 8mb
+app.config['MAX_CONTENT_LENGTH'] = 24 * 1024 * 1024
 
 
 import routes
