@@ -23,11 +23,11 @@ def index():
 
             output_filename, decode_errs = process_file(data, filename, support, confidence)
 
-            file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
-            print("File %s exists: %s\n" % (output_filename, file_exists))
-
-            if not file_exists:
-                return render_template('/error.html', form=form, errmsg="nofile")
+            # file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
+            # print("File %s exists: %s\n" % (output_filename, file_exists))
+            #
+            # if not file_exists:
+            #     return render_template('/error.html', form=form, errmsg="nofile")
 
             return render_template('/results.html', form=form, result=output_filename, decode_errs=decode_errs)
 
@@ -35,11 +35,13 @@ def index():
 
 @app.route('/download/<filename>', methods=['POST'])
 def uploaded_file(filename):
-    file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], filename))
-    print("File %s exists: %s\n" % (filename, file_exists))
+    p = os.path.join(app.config['DOWNLOAD_FOLDER'], filename)
+
+    file_exists = os.path.isfile(p)
+    file_size = os.path.getsize(p)
+
+    print("File %s exists: %s, size: %s\n" % (p, file_exists, file_size))
     if not file_exists:
         return "no file"
-
-    sleep(10)
 
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], (filename), as_attachment=True)
