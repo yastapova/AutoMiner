@@ -1,7 +1,6 @@
 import os.path
-from time import sleep
 
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask import request, render_template, send_from_directory
 from script import app
 from forms import UploadForm
 from werkzeug.utils import secure_filename
@@ -23,11 +22,10 @@ def index():
 
             output_filename, decode_errs = process_file(data, filename, support, confidence)
 
-            # file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
-            # print("File %s exists: %s\n" % (output_filename, file_exists))
-            #
-            # if not file_exists:
-            #     return render_template('/error.html', form=form, errmsg="nofile")
+            file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
+
+            if not file_exists:
+                return render_template('/error.html', form=form, errmsg="nofile")
 
             return render_template('/results.html', form=form, result=output_filename, decode_errs=decode_errs)
 
@@ -41,7 +39,5 @@ def uploaded_file(filename):
     file_size = os.path.getsize(p)
 
     print("File %s exists: %s, size: %s\n" % (p, file_exists, file_size))
-    if not file_exists:
-        return "no file"
 
-    return send_from_directory(app.config['DOWNLOAD_FOLDER'], (filename), as_attachment=True)
+    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)

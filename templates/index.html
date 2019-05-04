@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Online Association Miner</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
@@ -20,6 +21,8 @@
             <p><strong>File </strong>This field is for uploading your own data file. The file must have one transaction per line, with items separated by semicolons. The file must also conform to UTF-8 encoding (meaning some special characters may not be permitted).</p>
             <p><strong>Minimum Support </strong>This field refers to the minimum relative support, which refers to how often items in a pattern co-occur in transactions. This can be any value from 0 to 1. Increasing this value filters out more patterns, resulting in only the most popular ones being mined.</p>
             <p><strong>Minimum Confidence </strong>Confidence is a value that describes how often association rules are found to be true. In other words, if item A occurs in a transaction, how likely is it that item B will also occur? This can be any value from 0 to 1. Increasing this value results in fewer patterns being mined, since it will only retain the most confident rules.</p>
+            <h3>Troubleshooting</h3>
+            <p>Due to limited resources, the app may sometimes timeout during mining, displaying an "Application Error" page. If this occurs, please try increasing your support and confidence values. If the problem persists, you may also need to try a smaller data file.</p>
             <h3>Results</h3>
             <p>Once you submit the form, the app will begin mining patterns from your data. Once it is finished, it will automatically download the results file. The first line of this file contains the name of the data file that you submitted, the values you specified for support and confidence, and the execution time in seconds.</p>
             <p>After this line, the results file contains all of the prominent patterns that were mined based on your settings. Each line contains a pattern (which consists of one or more items separated by semicolons) and the number of times it appears in the data file (also known as absolute support). Below is a sample of what these lines may look like:</p>

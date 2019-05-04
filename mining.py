@@ -1,4 +1,3 @@
-import re
 from apyori import apriori
 import time
 from datetime import datetime
@@ -58,7 +57,7 @@ def association_mining(data, filename, min_support=0.01, min_conf=0):
     #Sorting list of lists in descending order
     final_results.sort(reverse = True)
 
-    end_time =  time.time()
+    end_time = time.time()
     execution_time = (end_time - start_time)
 
     final_results = [('%s, min_support=%s, min_conf=%s, runtime=%s' % (filename, min_support, min_conf, execution_time))] + final_results
