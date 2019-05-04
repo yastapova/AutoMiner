@@ -23,7 +23,7 @@ def index():
             output_filename, decode_errs = process_file(data, filename, support, confidence)
 
             return render_template('/results.html', form=form, result=output_filename, decode_errs=decode_errs)
-            # return redirect(url_for('uploaded_file', filename=output_filename))
+
     return render_template('/index.html', form=form)
 
 @app.route('/download/<filename>', methods=['POST'])
