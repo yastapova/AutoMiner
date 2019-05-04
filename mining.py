@@ -39,7 +39,7 @@ def association_mining(data, filename, min_support=0.01, min_conf=0):
 
     for i in range(0,len(results)):
         final_results[i][0] = int((results[i][1])*len(data))
-        final_results[i][1] = ', '.join(list(results[i][0]))
+        final_results[i][1] = '; '.join(list(results[i][0]))
 
     #Sorting list of lists in descending order
     final_results.sort(reverse = True)

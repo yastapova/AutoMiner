@@ -14,12 +14,22 @@ body {
 }
 
 #info {
+    text-align: justify;
     width: 25%;
     float: left;
     margin-left: 2%;
     border: 5px #FF7B88 dashed;
     border-radius: 20px;
+    height: 70vh;
+    padding: 0 5px;
+}
+
+#info-text {
     padding: 10px 25px;
+    overflow-y: auto;
+    height: 92%;
+    margin-top: 4%;
+    margin-bottom: 2%;
 }
 
 #right_container {
@@ -39,6 +49,16 @@ h1 {
 
 h2 {
     color: #1F6C99;
+    text-align: center;
+}
+
+h3 {
+    color: #1F6C99;
+    text-align: center;
+}
+
+strong {
+    margin-right: 25px;
 }
 
 /* Form */
