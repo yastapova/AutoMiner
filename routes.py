@@ -1,4 +1,4 @@
-import os
+import os.path
 
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from script import app
@@ -21,6 +21,10 @@ def index():
             data = f.readlines()
 
             output_filename, decode_errs = process_file(data, filename, support, confidence)
+
+            file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
+            if not file_exists:
+                return render_template('/error.html', form=form, errmsg="nofile")
 
             return render_template('/results.html', form=form, result=output_filename, decode_errs=decode_errs)
 
