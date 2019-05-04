@@ -23,6 +23,8 @@ def index():
             output_filename, decode_errs = process_file(data, filename, support, confidence)
 
             file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
+            print("File %s exists: %s\n" % (output_filename, file_exists))
+            
             if not file_exists:
                 return render_template('/error.html', form=form, errmsg="nofile")
 
