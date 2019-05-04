@@ -66,16 +66,7 @@
                 <p id="uploadButton">{{ form.submit(class_="nice_button") }}</p>
             </form>
         </div>
-        {% if result is not none and result != "" %}
-        <div id="results">
-            <p>Your file has finished processing. You should see the results file being downloaded automatically.</p>
-            <p>To redownload your latest results file again, click the button below.</p>
-            <form action="download/{{result}}" method="post">
-                <button id="download_button" class="nice_button" name="download_button" type="submit">Download Results</button>
-            </form>
-        </div>
-        <script>$("#download_button").click();</script>
-        {% endif %}
+        {% block content %}{% endblock %}
     </div>
 </div>
 </body>
