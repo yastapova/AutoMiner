@@ -11,6 +11,7 @@ body {
     background-color: #9FBCCD;
     border-radius: 50px;
     width: 70rem;
+    padding: 20px;
 }
 
 #info {
@@ -42,18 +43,28 @@ body {
     margin-top: 50px;
 }
 
+#logo {
+    display: inline;
+    height: 120px;
+    margin-right: 30px;
+    vertical-align: middle;
+}
+
 h1 {
-    color: #1F6C99;
+    color: #156695;
     font-size: 3rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
 }
 
 h2 {
-    color: #1F6C99;
+    color: #156695;
     text-align: center;
 }
 
 h3 {
-    color: #1F6C99;
+    color: #156695;
     text-align: center;
 }
 
@@ -89,14 +100,14 @@ button#trans_file_nice_button {
     font-size: 18px;
     padding: 10px 25px;
     border-radius: 25px;
-    border: 2px solid #1F6C99;
-    background-color: #1F6C99;
+    border: 2px solid #156695;
+    background-color: #156695;
     color: #9FBCCD;
     cursor: pointer;
 }
 .nice_button:hover {
     background-color: #9FBCCD;
-    color: #1F6C99;
+    color: #156695;
 }
 
 #selected_file_name {
