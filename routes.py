@@ -1,4 +1,5 @@
 import os.path
+from time import sleep
 
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from script import app
@@ -24,7 +25,7 @@ def index():
 
             file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], output_filename))
             print("File %s exists: %s\n" % (output_filename, file_exists))
-            
+
             if not file_exists:
                 return render_template('/error.html', form=form, errmsg="nofile")
 
@@ -34,4 +35,11 @@ def index():
 
 @app.route('/download/<filename>', methods=['POST'])
 def uploaded_file(filename):
+    file_exists = os.path.isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], filename))
+    print("File %s exists: %s\n" % (filename, file_exists))
+    if not file_exists:
+        return "no file"
+
+    sleep(10)
+
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], (filename), as_attachment=True)
