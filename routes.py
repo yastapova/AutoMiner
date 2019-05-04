@@ -7,8 +7,6 @@ from werkzeug.utils import secure_filename
 
 from mining import process_file
 
-decode_err = "decode"
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = UploadForm()
@@ -22,12 +20,9 @@ def index():
             filename = secure_filename(f.filename)
             data = f.readlines()
 
-            try:
-                output_filename = process_file(data, filename, support, confidence)
-            except UnicodeDecodeError:
-                return render_template('/error.html', form=form, errmsg=decode_err)
+            output_filename, decode_errs = process_file(data, filename, support, confidence)
 
-            return render_template('/results.html', form=form, result=output_filename)
+            return render_template('/results.html', form=form, result=output_filename, decode_errs=decode_errs)
             # return redirect(url_for('uploaded_file', filename=output_filename))
     return render_template('/index.html', form=form)
 

@@ -14,8 +14,22 @@ def save_results(results, filename):
 
 
 def process_file(data, input_file, support, confidence):
-    #Parsing and delimiting dataset
-    data = [d.decode("utf-8").strip().split(";") for d in data]
+    decode_errs = 0
+
+    # Parsing and delimiting dataset
+    for i in range(0, len(data)):
+        d = data[i]
+
+        # remove all transactions with decode errors
+        try:
+            d = d.decode("utf-8").strip().split(";")
+            data[i] = d
+        except UnicodeDecodeError:
+            decode_errs += 1
+            data[i] = []
+
+    # filter out empty lists
+    data = list(filter(None, data))
     results = association_mining(data, input_file, support, confidence)
 
     timestamp = str(datetime.utcnow()).split(".")[0]
@@ -24,7 +38,7 @@ def process_file(data, input_file, support, confidence):
     output_file = output_file + "_results_" + timestamp + ".txt"
 
     save_results(results, output_file)
-    return output_file
+    return output_file, decode_errs
 
 
 def association_mining(data, filename, min_support=0.01, min_conf=0):
