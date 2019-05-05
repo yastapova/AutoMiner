@@ -1,7 +1,7 @@
 # AutoMiner
 AutoMiner harnesses the power of data mining to discover patterns in transaction data. You can use this app to apply these methods to your own data by uploading a data file and tweaking the support and confidence settings.
 
-AutoMiner is hosted on Heroku: https://autominer.herokuapp.com/
+AutoMiner is hosted on PythonAnywhere: https://mhmmdkh2.pythonanywhere.com/
 
 ## Requirements
 This application is written for Python 3.6+ and uses the following libraries:
